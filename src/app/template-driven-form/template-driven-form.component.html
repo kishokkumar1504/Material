@@ -1,0 +1,52 @@
+<br>
+<br>
+<div class="container">
+    <h3>Template Driven Form</h3>
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <p>
+            <label for="firstname">FIRST NAME</label> &nbsp;
+            <input type="text" id="firstname" #firstName="ngModel" name="firstname" [(ngModel)]="contact.firstName" required>
+        </p>
+        <p>
+            <label for="lastname">LAST NAME</label> &nbsp;
+            <input type="text" id="lastname" name="lastname" [(ngModel)]="contact.lastName">
+        </p>
+        <p>
+            <label for="email">EMAIL</label> &nbsp;
+            <input type="email" id="email" name="email" [(ngModel)]="contact.email">
+        </p>
+        <p>
+            <label for="gender">Gender:</label> &nbsp;
+            <input type="radio" id="gender" name="name" value="male" [(ngModel)]="contact.gender">MALE
+            <input type="radio" id="gender" name="name" value="female" [(ngModel)]="contact.gender">FEMALE
+        </p>
+        <p>
+            <label for="isMarried">MARRIED</label>
+            <input type="checkbox" id="isMarried" name="isMarried" [(ngModel)]="contact.married">
+        </p>
+        <p>
+            <label for="country">Country</label>
+            <select name="country" id="country" [(ngModel)]="contact.country">
+                <option selected="" value="" disabled>SELECT</option>
+                <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.cname}}</option>
+            </select>
+        </p>
+        <div ngModelGroup="address">
+            <p>
+                <label for="city">City</label>
+                <input type="text" name="city" [(ngModel)]="contact.address.city">
+            </p>
+            <p>
+                <label for="street">Street</label>
+                <input type="text" name="street" [(ngModel)]="contact.address.street">
+            </p>
+            <p>
+                <label for="pincode">PIN CODE</label>
+                <input type="text" name="pincode" [(ngModel)]="contact.address.pincode">
+            </p>
+
+        </div>
+        <p><button type="submit" [disabled]="!contactForm.valid">SUBMIT</button></p>
+
+    </form>
+</div>

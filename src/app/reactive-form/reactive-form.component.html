@@ -1,0 +1,10 @@
+<div>
+    <form [formGroup]="contactForm" (submit)="onClick()">
+        <p><label for="firstname">FirstName: </label>
+            <input type="text" id="firstname" name="firstname" formControlName="firstName">
+            <span *ngIf="!firstname?.valid && firstname?.touched">
+                 FirstName is Invalid
+            </span></p>
+        <button type="submit" [disabled]="!contactForm.valid">SUBMIT</button>
+    </form>
+</div>

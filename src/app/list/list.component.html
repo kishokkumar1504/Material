@@ -1,0 +1,15 @@
+<app-form (kishok)="carGetUpdate(($event))">
+</app-form>
+<h5>LIST COMPONENT</h5>
+<div *ngIf="cars.length>0; then carBlock ;else elseBlock">
+</div>
+<ng-template #carBlock>
+    <ul>
+        <li *ngFor=" let carName of cars ">
+            {{carName}}
+        </li>
+    </ul>
+</ng-template>
+<ng-template #elseBlock>
+    <div>No Data Available</div>
+</ng-template>
